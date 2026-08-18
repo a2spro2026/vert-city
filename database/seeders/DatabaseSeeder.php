@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::query()->updateOrCreate(['email' => 'admin@vertcity.local'], [
-            'name' => 'Gérant Vertcity',
-            'login' => 'vertcity',
+            'name' => 'Abdelilah',
+            'login' => 'abdelilah',
             'password' => env('ADMIN_PASSWORD', '0661755048'),
             'status' => 'active',
             'role' => 'manager',

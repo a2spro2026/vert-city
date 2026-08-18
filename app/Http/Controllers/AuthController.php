@@ -24,9 +24,20 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (! Auth::attempt($credentials, $request->boolean('remember'))) {
+        if (! Auth::attempt([
+            'login' => $credentials['login'],
+            'password' => $credentials['password'],
+        ], $request->boolean('remember'))) {
             return back()
                 ->withErrors(['login' => 'Les identifiants saisis sont incorrects.'])
+                ->onlyInput('role', 'login');
+        }
+
+        if ($request->user()->role !== $credentials['role']) {
+            Auth::logout();
+
+            return back()
+                ->withErrors(['role' => 'Le statut sélectionné ne correspond pas à ce compte.'])
                 ->onlyInput('role', 'login');
         }
 

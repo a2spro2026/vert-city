@@ -23,14 +23,37 @@ Route::middleware('guest')->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'active'])->group(function () {
     Route::get('/', DashboardController::class)->name('dashboard');
 
-    foreach ([
-        'fournisseurs' => 'Fournisseurs',
-        'facturation' => 'Facturation',
-        'charges' => 'Charges',
-        'configuration' => 'Configuration',
-    ] as $route => $title) {
-        Route::get("/{$route}", fn () => view('admin.coming-soon', compact('title')))
-            ->name($route);
+    $comingSoon = [
+        'fournisseurs/fiches' => ['fournisseurs.fiches', 'Fiche Fournisseur'],
+        'fournisseurs/bons-achats' => ['fournisseurs.bons-achats', 'Bon Achats'],
+        'fournisseurs/bons-commande' => ['fournisseurs.bons-commande', 'Bon de Commande'],
+        'fournisseurs/reglements-achats' => ['fournisseurs.reglements', 'Règlement Achats'],
+        'fournisseurs/balance' => ['fournisseurs.balance', 'Balance Fournisseurs'],
+        'fournisseurs/releve-compte' => ['fournisseurs.releve', 'Relevé Compte'],
+        'stock/produits' => ['stock.produits', 'Fiche Produit'],
+        'stock/mouvements' => ['stock.mouvements', 'Mouvement Stock'],
+        'stock/fiscal' => ['stock.fiscal', 'Stock Fiscale'],
+        'facturation/depot-a' => ['facturation.depot-a', 'Dépôt A'],
+        'facturation/depot-b' => ['facturation.depot-b', 'Dépôt B'],
+        'facturation/depot-c' => ['facturation.depot-c', 'Dépôt C'],
+        'facturation/factures-ventes' => ['facturation.factures-ventes', 'Facture Ventes'],
+        'facturation/reglements' => ['facturation.reglements', 'Règlements Factures Ventes'],
+        'facturation/balance' => ['facturation.balance', 'Balance Facturation'],
+        'chantiers/devis' => ['chantiers.devis', 'Devis'],
+        'chantiers/bons-execution' => ['chantiers.bons-execution', "Bon d'exécution"],
+        'chantiers/suivi-depenses' => ['chantiers.suivi-depenses', 'Suivi Dépenses'],
+        'personnel/fiches' => ['personnel.fiches', 'Fiche Personnel'],
+        'personnel/etat-paiement' => ['personnel.etat-paiement', 'État Paiement'],
+        'monetaire/transactions' => ['monetaire.transactions', 'Transaction et Charges'],
+        'monetaire/charges' => ['monetaire.charges', 'Charge'],
+        'monetaire/salaires' => ['monetaire.salaires', 'Salaire'],
+        'monetaire/tresorerie' => ['monetaire.tresorerie', 'Trésorerie'],
+        'configuration/utilisateurs' => ['configuration.utilisateurs', 'Utilisateur'],
+        'configuration/parametres' => ['configuration.parametres', 'Paramètres'],
+    ];
+
+    foreach ($comingSoon as $uri => [$name, $title]) {
+        Route::get($uri, fn () => view('admin.coming-soon', ['title' => $title]))->name($name);
     }
 
     Route::resource('projets', ProjectController::class)

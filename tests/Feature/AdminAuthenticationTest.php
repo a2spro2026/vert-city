@@ -65,7 +65,7 @@ class AdminAuthenticationTest extends TestCase
             'role' => 'manager',
             'login' => 'commercial-user',
             'password' => 'secret-password',
-        ])->assertSessionHasErrors('login');
+        ])->assertSessionHasErrors('role');
 
         $this->assertGuest();
     }
