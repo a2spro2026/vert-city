@@ -5,14 +5,14 @@
 
 @section('content')
     <div class="mb-3 flex items-center gap-3">
-        <h2 class="text-xs font-bold uppercase tracking-[0.25em] text-slate-600 whitespace-nowrap">Cartes Analytiques</h2>
-        <div class="h-px flex-1 bg-gradient-to-r from-orange-400/60 via-slate-300 to-transparent"></div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.25em] text-[#4f6f3a] whitespace-nowrap">Cartes Analytiques</h2>
+        <div class="h-px flex-1 bg-gradient-to-r from-[#b8dc79]/70 via-amber-300/40 to-transparent"></div>
     </div>
 
     <div class="mb-6 grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-5">
         @foreach ($kpis as $kpi)
-            <article class="relative overflow-hidden rounded-lg bg-gradient-to-br {{ $kpi['gradient'] }} p-2.5 shadow-md min-h-[82px]">
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <article class="relative min-h-[82px] overflow-hidden rounded-lg bg-gradient-to-br {{ $kpi['gradient'] }} p-2.5 shadow-md">
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 to-transparent"></div>
                 <div class="relative flex h-full flex-col">
                     <div class="mb-1.5 flex items-center justify-between">
                         <span class="rounded-md bg-white/20 p-1 text-white">
@@ -30,13 +30,13 @@
         <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
             @include('admin.partials.report-table', [
                 'title' => '5 Derniers Bons Achats',
-                'accent' => 'from-amber-500 via-orange-500 to-orange-700',
+                'accent' => 'from-amber-500 via-orange-500 to-[#8a4b12]',
                 'columns' => ['Date', 'Fournisseurs', 'BN N°', 'Qte', 'Montant Bon', 'Solde'],
                 'rows' => $tables['bons_achats'],
             ])
             @include('admin.partials.report-table', [
                 'title' => '5 Derniers Bons Ventes',
-                'accent' => 'from-blue-600 via-blue-700 to-slate-800',
+                'accent' => 'from-[#2f6b4a] via-[#153827] to-[#0a1622]',
                 'columns' => ['Date', 'Client', 'BN N°', 'Qte', 'Montant Bon', 'Solde'],
                 'rows' => $tables['bons_ventes'],
             ])
@@ -44,13 +44,13 @@
         <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
             @include('admin.partials.report-table', [
                 'title' => '5 Derniers Bon Charge',
-                'accent' => 'from-teal-600 via-cyan-700 to-slate-800',
+                'accent' => 'from-teal-600 via-emerald-700 to-[#10281d]',
                 'columns' => ['Date', 'Désignation', 'Bénéficiaire', 'Régl', 'Date Décaiss'],
                 'rows' => $tables['bons_charges'],
             ])
             @include('admin.partials.report-table', [
                 'title' => '5 Régl à Décaisser — Semaine en cours',
-                'accent' => 'from-rose-500 via-red-500 to-rose-800',
+                'accent' => 'from-sky-700 via-[#1e3a4c] to-[#0a1622]',
                 'columns' => ['Type Rég', 'N°', 'Bnq', 'Tiré', 'Montant', 'Date Décaiss'],
                 'rows' => $tables['reglements'],
             ])

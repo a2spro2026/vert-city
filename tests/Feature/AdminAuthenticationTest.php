@@ -13,11 +13,25 @@ class AdminAuthenticationTest extends TestCase
     public function test_guest_can_view_login_page(): void
     {
         $this->get('/admin/login')
+            ->assertRedirect(route('home'));
+
+        $this->followingRedirects()
+            ->get('/admin/login')
             ->assertOk()
             ->assertSee('Gérant')
             ->assertSee('Commercial')
             ->assertSee('Chef Chantier')
-            ->assertSee('Facturation');
+            ->assertSee('Facturation')
+            ->assertSee('admin-login-panel', false);
+    }
+
+    public function test_home_contains_admin_login_panel(): void
+    {
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('data-login-open', false)
+            ->assertSee('Statut')
+            ->assertSee('Mot de passe');
     }
 
     public function test_active_user_can_log_in_with_login_and_password(): void
@@ -27,11 +41,12 @@ class AdminAuthenticationTest extends TestCase
             'password' => 'secret-password',
         ]);
 
-        $this->post('/admin/login', [
-            'role' => 'manager',
-            'login' => 'admin',
-            'password' => 'secret-password',
-        ])->assertRedirect(route('admin.dashboard'));
+        $this->from('/')
+            ->post('/admin/login', [
+                'role' => 'manager',
+                'login' => 'admin',
+                'password' => 'secret-password',
+            ])->assertRedirect(route('admin.dashboard'));
 
         $this->assertAuthenticatedAs($user);
     }
@@ -44,11 +59,14 @@ class AdminAuthenticationTest extends TestCase
             'status' => 'inactive',
         ]);
 
-        $this->post('/admin/login', [
-            'role' => 'manager',
-            'login' => 'blocked',
-            'password' => 'secret-password',
-        ])->assertSessionHasErrors('login');
+        $this->from('/')
+            ->post('/admin/login', [
+                'role' => 'manager',
+                'login' => 'blocked',
+                'password' => 'secret-password',
+            ])->assertRedirect('/')
+            ->assertSessionHasErrors('login')
+            ->assertSessionHas('open_login');
 
         $this->assertGuest();
     }
@@ -61,11 +79,13 @@ class AdminAuthenticationTest extends TestCase
             'role' => 'commercial',
         ]);
 
-        $this->post('/admin/login', [
-            'role' => 'manager',
-            'login' => 'commercial-user',
-            'password' => 'secret-password',
-        ])->assertSessionHasErrors('role');
+        $this->from('/')
+            ->post('/admin/login', [
+                'role' => 'manager',
+                'login' => 'commercial-user',
+                'password' => 'secret-password',
+            ])->assertRedirect('/')
+            ->assertSessionHasErrors('role');
 
         $this->assertGuest();
     }
@@ -81,7 +101,7 @@ class AdminAuthenticationTest extends TestCase
 
         $this->actingAs($user)
             ->post('/admin/deconnexion')
-            ->assertRedirect(route('login'));
+            ->assertRedirect(route('home'));
 
         $this->assertGuest();
     }

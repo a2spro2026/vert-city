@@ -1,27 +1,28 @@
 @extends('layouts.public')
 
 @section('content')
-    <section class="relative min-h-[780px] overflow-hidden bg-[#10281d]">
-        <img src="{{ asset('images/vertcity-residence-principale.png') }}" alt="Résidence immobilière Vertcity" class="absolute inset-0 h-full w-full object-cover object-center">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0d2118]/90 via-[#10281d]/50 to-black/5"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0d2118]/65 via-transparent to-black/20"></div>
+    <section class="relative aspect-[4/3] max-h-[88vh] min-h-[520px] w-full overflow-hidden bg-[#0a1622] sm:min-h-[600px]">
+        <img
+            src="{{ asset('images/vertcity-residence-principale.png') }}?v={{ filemtime(public_path('images/vertcity-residence-principale.png')) }}"
+            alt="Résidence immobilière Vertcity"
+            width="1024"
+            height="768"
+            class="absolute inset-0 h-full w-full object-cover object-[48%_40%]"
+        >
+        {{-- Voile léger seulement derrière le texte (soleil à gauche) --}}
+        <div class="absolute inset-y-0 left-0 w-[min(100%,36rem)] bg-gradient-to-r from-[#071018]/50 via-[#071018]/20 to-transparent"></div>
 
-        <div class="relative mx-auto flex min-h-[780px] max-w-7xl items-center px-6 pb-12 pt-28 lg:px-10">
-            <div class="max-w-2xl text-white">
+        <div class="relative mx-auto flex h-full max-w-7xl items-center px-6 pb-16 pt-28 lg:px-10">
+            <div class="max-w-xl text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.55)]">
                 <p class="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#b8dc79] glow-eyebrow">Promotion immobilière</p>
                 <p lang="ar" dir="rtl" class="text-arabic glow-arabic mb-4 w-fit text-3xl font-semibold md:text-4xl">بيتك يبدأ من هنا</p>
-                <h1 class="heading-hero text-5xl leading-[1.08] md:text-7xl">Des espaces pensés pour mieux vivre.</h1>
-                <p class="mt-6 max-w-xl text-lg leading-8 text-white/75 glow-soft">Vertcity imagine et réalise des résidences durables, modernes et harmonieuses pour accompagner vos projets de vie.</p>
+                <h1 class="heading-hero text-4xl leading-[1.08] md:text-6xl lg:text-7xl">Des espaces pensés pour mieux vivre.</h1>
+                <p class="mt-6 max-w-lg text-base leading-8 text-white/90 glow-soft md:text-lg">Vertcity imagine et réalise des résidences durables, modernes et harmonieuses pour accompagner vos projets de vie.</p>
                 <div class="mt-9 flex flex-wrap gap-3">
                     <a href="{{ route('public.projects.new') }}" class="btn-glow-primary rounded-full bg-[#b8dc79] px-6 py-3.5 text-sm font-semibold text-[#153827] transition hover:bg-white">Découvrir nos projets</a>
                     <a href="{{ route('public.projects.construction') }}" class="btn-glow-outline rounded-full border border-white/40 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white hover:text-[#153827]">Voir les chantiers</a>
                 </div>
             </div>
-        </div>
-
-        <div class="panel-luminous absolute bottom-0 right-0 hidden bg-white/95 px-10 py-6 backdrop-blur md:block">
-            <p lang="ar" dir="rtl" class="text-arabic text-xl font-semibold text-[#153827]">نبني بثقة، نسكن بجودة</p>
-            <p class="mt-1 text-xs text-slate-400">Construire avec confiance, habiter avec qualité.</p>
         </div>
     </section>
 

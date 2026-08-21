@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connexion — Vertcity</title>
+    <link rel="icon" href="{{ asset('images/vertcity-logo.png') }}" type="image/png">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=dm-sans:400,500,600,700|outfit:400,500,600,700|noto-kufi-arabic:400,600,700" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -12,7 +13,7 @@
     <main class="grid min-h-screen lg:grid-cols-2">
         <section class="relative hidden overflow-hidden bg-[#173b2a] lg:flex lg:flex-col lg:justify-between lg:p-14">
             <div class="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_20%_20%,#9dcc63_0,transparent_35%),radial-gradient(circle_at_80%_80%,#58a777_0,transparent_40%)]"></div>
-            <a href="/" class="brand-mark font-display relative text-2xl font-bold text-white">VERT<span class="text-[#a7d46f] glow-eyebrow">CITY</span></a>
+            @include('layouts.partials.brand', ['tone' => 'light', 'size' => 'lg', 'showTagline' => true, 'class' => 'relative'])
             <div class="relative max-w-lg">
                 <p class="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#a7d46f] glow-eyebrow">Espace de gestion</p>
                 <h1 class="heading-hero text-5xl leading-tight">Pilotez vos projets immobiliers en toute sérénité.</h1>
@@ -23,7 +24,7 @@
 
         <section class="flex items-center justify-center px-6 py-12 sm:px-12">
             <div class="w-full max-w-md">
-                <a href="/" class="font-display mb-14 block text-xl font-bold text-[#173b2a] lg:hidden">VERT<span class="text-[#70a744]">CITY</span></a>
+                @include('layouts.partials.brand', ['tone' => 'dark', 'size' => 'md', 'class' => 'mb-14 lg:hidden'])
                 <div class="mb-9">
                     <div class="panel-luminous mb-5 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700">
                         <span class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_10px_2px_rgba(16,185,129,0.6)]"></span>

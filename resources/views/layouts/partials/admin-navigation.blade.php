@@ -38,7 +38,7 @@
             'id' => 'fournisseurs',
             'label' => 'Fournisseur',
             'icon' => 'truck',
-            'accent' => 'from-amber-500/20 to-orange-600/10',
+            'accent' => 'from-amber-400/20 to-orange-500/10',
             'children' => [
                 ['route' => 'admin.fournisseurs.fiches', 'label' => 'Fiche Fournisseur', 'icon' => 'contact'],
                 ['route' => 'admin.fournisseurs.bons-achats', 'label' => 'Bon Achats', 'icon' => 'clipboard'],
@@ -52,7 +52,7 @@
             'id' => 'stock',
             'label' => 'Stock',
             'icon' => 'package',
-            'accent' => 'from-emerald-500/20 to-teal-600/10',
+            'accent' => 'from-emerald-400/20 to-teal-600/10',
             'children' => [
                 ['route' => 'admin.stock.produits', 'label' => 'Fiche Produit', 'icon' => 'boxes'],
                 ['route' => 'admin.stock.mouvements', 'label' => 'Mouvement Stock', 'icon' => 'arrows'],
@@ -63,7 +63,7 @@
             'id' => 'facturation',
             'label' => 'Facturation',
             'icon' => 'file',
-            'accent' => 'from-indigo-500/20 to-blue-700/10',
+            'accent' => 'from-sky-400/15 to-cyan-700/10',
             'children' => [
                 ['route' => 'admin.facturation.depot-a', 'label' => 'Dépôt A', 'icon' => 'warehouse'],
                 ['route' => 'admin.facturation.depot-b', 'label' => 'Dépôt B', 'icon' => 'warehouse'],
@@ -77,7 +77,7 @@
             'id' => 'chantiers',
             'label' => 'Chantiers',
             'icon' => 'hardhat',
-            'accent' => 'from-yellow-500/20 to-amber-600/10',
+            'accent' => 'from-[#b8dc79]/25 to-lime-700/10',
             'children' => [
                 ['route' => 'admin.chantiers.index', 'active' => ['admin.chantiers.index', 'admin.chantiers.create', 'admin.chantiers.edit'], 'label' => 'Carte Chantiers', 'icon' => 'map'],
                 ['route' => 'admin.chantiers.devis', 'label' => 'Devis', 'icon' => 'file'],
@@ -89,7 +89,7 @@
             'id' => 'monetaire',
             'label' => 'Suivi Monétaire',
             'icon' => 'landmark',
-            'accent' => 'from-rose-500/20 to-pink-600/10',
+            'accent' => 'from-amber-300/20 to-yellow-700/10',
             'children' => [
                 ['route' => 'admin.monetaire.transactions', 'label' => 'Transaction et Charges', 'icon' => 'arrows'],
                 ['route' => 'admin.monetaire.charges', 'label' => 'Charge', 'icon' => 'wallet'],
@@ -101,7 +101,7 @@
             'id' => 'personnel',
             'label' => 'Personnel',
             'icon' => 'users',
-            'accent' => 'from-violet-500/20 to-purple-600/10',
+            'accent' => 'from-teal-400/15 to-emerald-800/10',
             'children' => [
                 ['route' => 'admin.personnel.fiches', 'label' => 'Fiche Personnel', 'icon' => 'contact'],
                 ['route' => 'admin.personnel.etat-paiement', 'label' => 'État Paiement', 'icon' => 'calendar'],
@@ -111,7 +111,7 @@
             'id' => 'projets',
             'label' => 'Projets',
             'icon' => 'building',
-            'accent' => 'from-lime-500/20 to-emerald-700/10',
+            'accent' => 'from-lime-400/20 to-emerald-700/10',
             'children' => [
                 ['route' => 'admin.projets.index', 'active' => ['admin.projets.index', 'admin.projets.edit'], 'label' => 'Liste des projets', 'icon' => 'list'],
                 ['route' => 'admin.projets.create', 'label' => 'Nouveau projet', 'icon' => 'plus'],
@@ -121,7 +121,7 @@
             'id' => 'configuration',
             'label' => 'Configuration',
             'icon' => 'settings',
-            'accent' => 'from-slate-400/20 to-slate-600/10',
+            'accent' => 'from-white/10 to-[#153827]/20',
             'children' => [
                 ['route' => 'admin.configuration.utilisateurs', 'label' => 'Utilisateur', 'icon' => 'user-cog'],
                 ['route' => 'admin.configuration.parametres', 'label' => 'Paramètres', 'icon' => 'settings'],
@@ -139,11 +139,11 @@
 @endphp
 
 <a href="{{ route('admin.dashboard') }}"
-    class="sidebar-nav-item relative mb-2 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition {{ $dashboardActive ? 'sidebar-nav-active text-white' : 'text-blue-100 hover:bg-white/10 hover:text-white' }}">
+    class="sidebar-nav-item relative mb-2 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition {{ $dashboardActive ? 'sidebar-nav-active text-[#10281d]' : 'text-[#d9ebc4] hover:bg-white/10 hover:text-white' }}">
     @if ($dashboardActive)
-        <span class="sidebar-active-indicator absolute top-1/2 left-0 h-8 w-1 -translate-y-1/2 rounded-r-full bg-white/80"></span>
+        <span class="sidebar-active-indicator absolute top-1/2 left-0 h-8 w-1 -translate-y-1/2 rounded-r-full bg-[#d7f0a4]"></span>
     @endif
-    <span class="sidebar-icon-wrap grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $dashboardActive ? 'bg-white/25' : 'bg-white/5' }}">
+    <span class="sidebar-icon-wrap grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $dashboardActive ? 'bg-[#10281d]/15' : 'bg-white/5' }}">
         {!! $renderIcon('dashboard') !!}
     </span>
     Tableau de Bord
@@ -157,8 +157,8 @@
             });
         @endphp
         <details class="group/nav mb-1" @if ($childActive) open @endif>
-            <summary class="sidebar-nav-item flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-blue-100 transition hover:bg-white/10 hover:text-white {{ $childActive ? 'sidebar-section-open bg-gradient-to-r '.$group['accent'].' text-white' : '' }}">
-                <span class="sidebar-icon-wrap grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $childActive ? 'bg-white/25' : 'bg-white/5' }}">
+            <summary class="sidebar-nav-item flex cursor-pointer list-none items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-[#d9ebc4] transition hover:bg-white/10 hover:text-white {{ $childActive ? 'sidebar-section-open bg-gradient-to-r '.$group['accent'].' text-white' : '' }}">
+                <span class="sidebar-icon-wrap grid h-8 w-8 shrink-0 place-items-center rounded-lg {{ $childActive ? 'bg-white/20' : 'bg-white/5' }}">
                     {!! $renderIcon($group['icon']) !!}
                 </span>
                 <span class="flex-1 truncate text-left">{{ $group['label'] }}</span>
@@ -170,11 +170,11 @@
                 @foreach ($group['children'] as $child)
                     @php $active = request()->routeIs(...(array) ($child['active'] ?? $child['route'])); @endphp
                     <a href="{{ route($child['route']) }}"
-                        class="sidebar-child-item group/child relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition {{ $active ? 'sidebar-child-active text-white' : 'text-blue-200/90 hover:bg-white/5 hover:text-white' }}">
+                        class="sidebar-child-item group/child relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] font-medium transition {{ $active ? 'sidebar-child-active text-white' : 'text-[#c9dfb0]/85 hover:bg-white/5 hover:text-white' }}">
                         @if ($active)
-                            <span class="absolute top-1/2 left-0 h-5 w-0.5 -translate-y-1/2 rounded-full bg-orange-400"></span>
+                            <span class="absolute top-1/2 left-0 h-5 w-0.5 -translate-y-1/2 rounded-full bg-[#b8dc79]"></span>
                         @endif
-                        <span class="sidebar-child-icon {{ $active ? 'text-orange-400' : 'opacity-70' }}">{!! $renderIcon($child['icon'], 'h-4 w-4') !!}</span>
+                        <span class="sidebar-child-icon {{ $active ? 'text-[#d7f0a4]' : 'opacity-70' }}">{!! $renderIcon($child['icon'], 'h-4 w-4') !!}</span>
                         <span class="truncate">{{ $child['label'] }}</span>
                     </a>
                 @endforeach

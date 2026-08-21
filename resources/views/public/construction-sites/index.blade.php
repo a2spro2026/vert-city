@@ -7,7 +7,6 @@
     <section class="relative overflow-hidden bg-[#153827] px-6 pb-20 pt-40 text-white">
         <div class="absolute inset-0 opacity-15 [background-image:radial-gradient(circle_at_80%_20%,#b8dc79_0,transparent_35%)]"></div>
         <div class="relative mx-auto max-w-7xl lg:px-4">
-            <p lang="ar" dir="rtl" class="text-arabic glow-arabic mb-3 w-fit text-xl font-semibold">نبني بثقة وشفافية</p>
             <h1 class="heading-hero text-4xl md:text-6xl">{{ $title }}</h1>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-white/70 glow-soft">{{ $subtitle }}</p>
         </div>

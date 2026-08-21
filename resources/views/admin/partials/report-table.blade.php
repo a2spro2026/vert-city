@@ -16,7 +16,7 @@
             </thead>
             <tbody class="divide-y divide-slate-100">
                 @forelse ($rows as $row)
-                    <tr class="hover:bg-orange-50/50">
+                    <tr class="hover:bg-[#edf5e4]/70">
                         @foreach ($row as $cell)
                             <td class="px-4 py-2.5 text-center text-slate-700">{{ $cell }}</td>
                         @endforeach
